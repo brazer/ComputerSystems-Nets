@@ -12,6 +12,7 @@ public class Main {
 	private JPanel buttonPanel = new JPanel();
 	private JButton showGraph = new JButton("Показать граф");
 	private JButton showMatrix = new JButton("Показать матрицу смежности");
+	private JButton showEdges = new JButton("Показать дугами");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -31,6 +32,7 @@ public class Main {
 				parseString();
 				showGraph.setEnabled(true);
 				showMatrix.setEnabled(true);
+				showEdges.setEnabled(true);
 			}
 		});
 		showGraph.setEnabled(false);
@@ -45,11 +47,18 @@ public class Main {
 				showMatrix();
 			}
 		});
+		showEdges.setEnabled(false);
+		showEdges.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showEdges();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
 		buttonPanel.add(showGraph);
 		buttonPanel.add(showMatrix);
+		buttonPanel.add(showEdges);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -73,6 +82,13 @@ public class Main {
 		MatrixFrame frame = new MatrixFrame();
 		frame.setTitle("Матрица смежности");
 		frame.setSize(500, 500);
+		frame.setVisible(true);
+	}
+	
+	private void showEdges() {
+		EdgeFrame frame = new EdgeFrame();
+		frame.setTitle("Описание дугами");
+		frame.setSize(300, 200);
 		frame.setVisible(true);
 	}
 	
