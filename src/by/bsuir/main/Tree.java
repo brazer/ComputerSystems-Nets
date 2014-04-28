@@ -21,6 +21,10 @@ public abstract class Tree {
 	public int getId() {
 		return id;
 	}
+	
+	public static int getCount() {
+		return count;
+	}
 
 }
 

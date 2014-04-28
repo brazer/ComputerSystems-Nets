@@ -6,6 +6,7 @@ class Edge	{
 	
 	private int id;
 	private static int count = 0;
+	private int idVertex1, idVertex2;
 	public final String name1, name2;
 	public static ArrayList<Edge> edges = new ArrayList<Edge>();
 	
@@ -19,31 +20,49 @@ class Edge	{
 		return id;
 	}
 	
+	public int getIdVertex1() {
+		return idVertex1;
+	}
+	
+	public int getIdVertex2() {
+		return idVertex2;
+	}
+		
+	public void setIds(int id1, int id2) {
+		this.idVertex1 = id1;
+		this.idVertex2 = id2;
+	}
+	
+	public static int getCount() {
+		return count;
+	}
+	
 	public static void buildEdges() {
 		Tree t = Tree.getRoot();
 		traverse((Node) t);
 	}
 	
 	private static void traverse(Node n) {
-		String str1 = getNodeInfo(n);
 		Tree left = n.getLeft();
 		Tree right = n.getRight();
-		processChild(str1, left);
-		processChild(str1, right);
+		processChild(n, left);
+		processChild(n, right);
 	}
 	
-	private static void processChild(String str1, Tree t) {
+	private static void processChild(Node n, Tree t) {
 		if (t instanceof Node) 
-			addEdgeAndTraverse(str1, (Node) t);
+			addEdgeAndTraverse(n, (Node) t);
 		if (t instanceof Leaf)
-			addEdge(str1, (Leaf) t);
+			addEdge(n, (Leaf) t);
 	}
 	
-	private static void addEdgeAndTraverse(String str1, Node n) {
-		String str2 = getNodeInfo(n);
+	private static void addEdgeAndTraverse(Node parent, Node child) {
+		String str1 = getNodeInfo(parent);
+		String str2 = getNodeInfo(child);
 		Edge edge = new Edge(str1, str2);
+		edge.setIds(parent.getId(), child.getId());
 		edges.add(edge);
-		traverse(n);
+		traverse(child);
 	}
 	
 	private static String getNodeInfo(Node n) {
@@ -53,9 +72,11 @@ class Edge	{
 		return s;
 	}
 	
-	private static void addEdge(String str1, Leaf l) {
+	private static void addEdge(Node n, Leaf l) {
+		String str1 = getNodeInfo(n);
 		String str2 = getLeafInfo(l);
 		Edge edge = new Edge(str1, str2);
+		edge.setIds(n.getId(), l.getId());
 		edges.add(edge);
 	}
 	
