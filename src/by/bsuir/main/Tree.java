@@ -3,10 +3,18 @@ package by.bsuir.main;
 public abstract class Tree {
 
 	private int id;
+	private static int count = 0;
 	private static Node root = null;
 	
+	public Tree() {
+		count++; id = count;
+	}
+	
+	public static void setRoot(Node r) {
+		root = r;
+	}
+	
 	public static Node getRoot() {
-		//if (root==null) root = new Node();
 		return root;
 	}
 
@@ -14,9 +22,6 @@ public abstract class Tree {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 }
 
 class Node extends Tree {
@@ -24,8 +29,8 @@ class Node extends Tree {
 	private char OPER;
 	private Tree left=null, right=null;
 	
-	public Node(char oper) {
-		this.OPER = oper;
+	public Node(char i) {
+		OPER = i;
 	}
 	
 	public char getOperation() {
@@ -48,11 +53,6 @@ class Node extends Tree {
 		right = r;
 	}
 	
-	public boolean isReady() {
-		if (left!=null & right!=null) return true;
-		else return false;
-	}
-	
 	class Operation {
 		public static final int
 			ADD=0, SUB=1, MUL=2, DIV=3, FUNC=4, OUT=5;
@@ -63,8 +63,8 @@ class Leaf extends Tree {
 	
 	private int X;
 	
-	public Leaf(int v) {
-		X = v;
+	public Leaf(int i) {
+		X = i;
 	}
 	
 	public int getX() {

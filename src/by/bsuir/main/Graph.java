@@ -242,11 +242,10 @@ public class Graph extends JApplet {
      */
     private void createTree() {
     	try {
-	    	graph.addVertex("=");
-	    	for (int i=0; i<GraphFrame.edges.size(); i++)
+	    	for (int i=0; i<Edge.edges.size(); i++)
 	    		graph.addEdge(edgeFactory.create(), 
-	    				GraphFrame.edges.get(i).name1,
-	    				GraphFrame.edges.get(i).name2
+	    				Edge.edges.get(i).name1,
+	    				Edge.edges.get(i).name2
 	    				);
     	} catch(Exception e)
     	{
