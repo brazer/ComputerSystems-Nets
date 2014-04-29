@@ -13,6 +13,7 @@ public class Main {
 	private JButton showGraph = new JButton("Показать граф");
 	private JButton showMatrix = new JButton("Показать матрицу смежности");
 	private JButton showEdges = new JButton("Показать дугами");
+	private JButton showSpecification = new JButton("Показать спецификацию");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -33,6 +34,7 @@ public class Main {
 				showGraph.setEnabled(true);
 				showMatrix.setEnabled(true);
 				showEdges.setEnabled(true);
+				showSpecification.setEnabled(true);
 			}
 		});
 		showGraph.setEnabled(false);
@@ -53,12 +55,19 @@ public class Main {
 				showEdges();
 			}
 		});
+		showSpecification.setEnabled(false);
+		showSpecification.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showSpecification();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
 		buttonPanel.add(showGraph);
 		buttonPanel.add(showMatrix);
 		buttonPanel.add(showEdges);
+		buttonPanel.add(showSpecification);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -90,6 +99,17 @@ public class Main {
 		frame.setTitle("Описание дугами");
 		frame.setSize(300, 200);
 		frame.setVisible(true);
+	}
+	
+	private void showSpecification() {
+		Specification spec = new Specification();
+		final JTable table = new JTable(spec.getData(), spec.getColumns());
+		final TablePanel panel = new TablePanel(table);
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                TablePanel.createAndShowGUI(panel);
+            }
+        });
 	}
 	
 }
