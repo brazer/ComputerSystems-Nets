@@ -2,7 +2,7 @@ package by.bsuir.main;
 
 import java.util.Stack;
 
-class ParsingFunction {
+class Parser {
 	
 	private Stack<Tree> treeBuilding = new Stack<Tree>();
 	private boolean highFlag = false, lowFlag = false;
@@ -35,7 +35,7 @@ class ParsingFunction {
 				Node f = new Node(str[i]);
 				i += 2;
 				char arg[] = getArgument(str, i);
-				ParsingFunction p = new ParsingFunction();
+				Parser p = new Parser();
 				Tree t = p.buildTree(arg);
 				f.setLeft(t);
 				treeBuilding.push(f);

@@ -66,7 +66,7 @@ public class Main {
 	}
 	
 	private void parseString() {
-		ParsingFunction pf = new ParsingFunction();
+		Parser pf = new Parser();
 		pf.parse(functionField.getText().toCharArray());		
 		Edge.buildEdges();
 	}
