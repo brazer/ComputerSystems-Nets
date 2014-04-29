@@ -14,6 +14,7 @@ public class Main {
 	private JButton showMatrix = new JButton("Показать матрицу смежности");
 	private JButton showEdges = new JButton("Показать дугами");
 	private JButton showSpecification = new JButton("Показать спецификацию");
+	private JButton showPaths = new JButton("Показать пути");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -35,6 +36,7 @@ public class Main {
 				showMatrix.setEnabled(true);
 				showEdges.setEnabled(true);
 				showSpecification.setEnabled(true);
+				showPaths.setEnabled(true);
 			}
 		});
 		showGraph.setEnabled(false);
@@ -61,6 +63,12 @@ public class Main {
 				showSpecification();
 			}
 		});
+		showPaths.setEnabled(false);
+		showPaths.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showPaths();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
@@ -68,6 +76,7 @@ public class Main {
 		buttonPanel.add(showMatrix);
 		buttonPanel.add(showEdges);
 		buttonPanel.add(showSpecification);
+		buttonPanel.add(showPaths);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -110,6 +119,13 @@ public class Main {
                 TablePanel.createAndShowGUI(panel);
             }
         });
+	}
+	
+	private void showPaths() {
+		PathFrame frame = new PathFrame();
+		frame.setTitle("Пути");
+		frame.setSize(300, 300);
+		frame.setVisible(true);
 	}
 	
 }
