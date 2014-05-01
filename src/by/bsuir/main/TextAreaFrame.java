@@ -15,9 +15,9 @@ public class TextAreaFrame extends JFrame {
 		setArea(area);
 	}
 	
-	public TextAreaFrame(int vector[]) {
+	public TextAreaFrame(int vector[], String s) {
 		JTextArea area = new JTextArea();
-		area.setText(getString(vector));
+		area.setText(getString(vector, s));
 		setArea(area);
 	}
 	
@@ -30,8 +30,7 @@ public class TextAreaFrame extends JFrame {
 		pane.add(area);
 	}
 	
-	public String getString(int vector[]) {
-		String s = "P(";
+	public String getString(int vector[], String s) {
 		for (int i=0; i<vector.length; i++)
 			s += ""+vector[i]+((i==vector.length-1) ? ")" : ", ");
 		return s;

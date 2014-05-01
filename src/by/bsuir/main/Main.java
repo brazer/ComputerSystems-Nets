@@ -165,7 +165,7 @@ public class Main {
 	
 	private void showFunctionVector() {
 		FunctionVector vector = new FunctionVector();
-		TextAreaFrame frame = new TextAreaFrame(vector.getVector());
+		TextAreaFrame frame = new TextAreaFrame(vector.getVector(), "P(");
 		frame.setTitle("Вектор назначения");
 		frame.setSize(500, 70);
 		frame.setVisible(true);
@@ -173,7 +173,7 @@ public class Main {
 	
 	private void showRealisationVector() {
 		RealisationVector vector = new RealisationVector();
-		TextAreaFrame frame = new TextAreaFrame(vector.getVector());
+		TextAreaFrame frame = new TextAreaFrame(vector.getVector(), "T(");
 		frame.setTitle("Вектор реализации");
 		frame.setSize(500, 70);
 		frame.setVisible(true);
