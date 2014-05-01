@@ -15,6 +15,7 @@ public class Main {
 	private JButton showEdges = new JButton("Показать дугами");
 	private JButton showSpecification = new JButton("Показать спецификацию");
 	private JButton showPaths = new JButton("Показать пути");
+	private JButton showComplianceMatrix = new JButton("Показать матрицу соответствия");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -37,6 +38,7 @@ public class Main {
 				showEdges.setEnabled(true);
 				showSpecification.setEnabled(true);
 				showPaths.setEnabled(true);
+				showComplianceMatrix.setEnabled(true);
 			}
 		});
 		showGraph.setEnabled(false);
@@ -69,6 +71,12 @@ public class Main {
 				showPaths();
 			}
 		});
+		showComplianceMatrix.setEnabled(false);
+		showComplianceMatrix.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showComplianceMatrix();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
@@ -77,6 +85,7 @@ public class Main {
 		buttonPanel.add(showEdges);
 		buttonPanel.add(showSpecification);
 		buttonPanel.add(showPaths);
+		buttonPanel.add(showComplianceMatrix);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -125,6 +134,14 @@ public class Main {
 		PathFrame frame = new PathFrame();
 		frame.setTitle("Пути");
 		frame.setSize(300, 300);
+		frame.setVisible(true);
+	}
+	
+	private void showComplianceMatrix() {
+		ComplianceMatrix matrix = new ComplianceMatrix();
+		MatrixFrame frame = new MatrixFrame(matrix.getMatrix());
+		frame.setTitle("Матрица соответствия");
+		frame.setSize(500, 500);
 		frame.setVisible(true);
 	}
 	

@@ -1,0 +1,87 @@
+{
+  "PlusMinus": {
+    "Device": [
+      1,
+      2,
+      3
+    ],
+    "Time": [
+      12,
+      34,
+      56
+    ],
+    "Coefficient": [
+      12,
+      34,
+      56
+    ]
+  },
+  "MultipleDivide": {
+    "Device": [
+      4,
+      5,
+      6
+    ],
+    "Time": [
+      15,
+      24,
+      6
+    ],
+    "Coefficient": [
+      15,
+      24,
+      6
+    ]
+  },
+  "Function": {
+    "Device": [
+      7,
+      8,
+      9
+    ],
+    "Time": [
+      23,
+      34,
+      12
+    ],
+    "Coefficient": [
+      23,
+      34,
+      12
+    ]
+  },
+  "Input": {
+    "Device": [
+      10,
+      11,
+      12
+    ],
+    "Time": [
+      7,
+      24,
+      2
+    ],
+    "Coefficient": [
+      7,
+      4,
+      2
+    ]
+  },
+  "Output": {
+    "Device": [
+      13,
+      14,
+      15
+    ],
+    "Time": [
+      7,
+      6,
+      4
+    ],
+    "Coefficient": [
+      7,
+      6,
+      4
+    ]
+  }
+}
