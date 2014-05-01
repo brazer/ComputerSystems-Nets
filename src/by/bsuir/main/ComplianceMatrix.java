@@ -4,10 +4,14 @@ import by.bsuir.main.JsonParser.Data;
 
 public class ComplianceMatrix {
 	
-	private int matrix[][];
+	private static int matrix[][];
 	private Data data;
 	
 	public int[][] getMatrix() {
+		return matrix;
+	}
+	
+	public static int[][] getMatrixFromStatic() {
 		return matrix;
 	}
 	

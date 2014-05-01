@@ -12,9 +12,13 @@ import javax.swing.JOptionPane;
 
 public class JsonParser {
 	
-	private Data d;
+	private static Data d;
 	
 	public Data getData() {
+		return d;
+	}
+	
+	public static Data getDataFromStatic() {
 		return d;
 	}
 	
@@ -149,6 +153,17 @@ public class JsonParser {
 		
 		public int[] getOutputDeviceNumbers() {
 			return operations[4].number;
+		}
+		
+		public int getTime(int numberDevice) {
+			int n = -1;
+			for (int i=0; i<5; i++)
+				for (int j=0; j<3; j++) 
+					if (operations[i].number[j]==numberDevice) {
+						n = operations[i].time[j];
+						break;
+					}
+			return n;
 		}
 		
 	}

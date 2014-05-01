@@ -16,6 +16,8 @@ public class Main {
 	private JButton showSpecification = new JButton("Показать спецификацию");
 	private JButton showPaths = new JButton("Показать пути");
 	private JButton showComplianceMatrix = new JButton("Показать матрицу соответствия");
+	private JButton showFunctionVector = new JButton("Показать вектор назначения");
+	private JButton showRealisationVector = new JButton("Показать вектор реализации");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -75,6 +77,20 @@ public class Main {
 		showComplianceMatrix.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent arg0) {
 				showComplianceMatrix();
+				showFunctionVector.setEnabled(true);
+				showRealisationVector.setEnabled(true);
+			}
+		});
+		showFunctionVector.setEnabled(false);
+		showFunctionVector.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showFunctionVector();
+			}
+		});
+		showRealisationVector.setEnabled(false);
+		showRealisationVector.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showRealisationVector();
 			}
 		});
 		panel.add(label);
@@ -86,6 +102,8 @@ public class Main {
 		buttonPanel.add(showSpecification);
 		buttonPanel.add(showPaths);
 		buttonPanel.add(showComplianceMatrix);
+		buttonPanel.add(showFunctionVector);
+		buttonPanel.add(showRealisationVector);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -113,9 +131,9 @@ public class Main {
 	}
 	
 	private void showEdges() {
-		EdgeFrame frame = new EdgeFrame();
+		TextAreaFrame frame = new TextAreaFrame();
 		frame.setTitle("Описание дугами");
-		frame.setSize(300, 200);
+		frame.setSize(545, 70);
 		frame.setVisible(true);
 	}
 	
@@ -142,6 +160,22 @@ public class Main {
 		MatrixFrame frame = new MatrixFrame(matrix.getMatrix());
 		frame.setTitle("Матрица соответствия");
 		frame.setSize(500, 500);
+		frame.setVisible(true);
+	}
+	
+	private void showFunctionVector() {
+		FunctionVector vector = new FunctionVector();
+		TextAreaFrame frame = new TextAreaFrame(vector.getVector());
+		frame.setTitle("Вектор назначения");
+		frame.setSize(500, 70);
+		frame.setVisible(true);
+	}
+	
+	private void showRealisationVector() {
+		RealisationVector vector = new RealisationVector();
+		TextAreaFrame frame = new TextAreaFrame(vector.getVector());
+		frame.setTitle("Вектор реализации");
+		frame.setSize(500, 70);
 		frame.setVisible(true);
 	}
 	

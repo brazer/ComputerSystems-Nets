@@ -5,19 +5,36 @@ import java.awt.Container;
 
 import javax.swing.*;
 
-public class EdgeFrame extends JFrame {
+public class TextAreaFrame extends JFrame {
 
 	private static final long serialVersionUID = 7211949511231058150L;
 	
-	public EdgeFrame() {
+	public TextAreaFrame() {
 		JTextArea area = new JTextArea();
+		area.setText(getDescription());
+		setArea(area);
+	}
+	
+	public TextAreaFrame(int vector[]) {
+		JTextArea area = new JTextArea();
+		area.setText(getString(vector));
+		setArea(area);
+	}
+	
+	private void setArea(JTextArea area) {
 		area.setEditable(false);
 		area.setLineWrap(true);
-		area.setText(getDescription());
 		area.setBackground(Color.lightGray);
 		area.setFocusable(false);
 		Container pane = getContentPane();
 		pane.add(area);
+	}
+	
+	public String getString(int vector[]) {
+		String s = "P(";
+		for (int i=0; i<vector.length; i++)
+			s += ""+vector[i]+((i==vector.length-1) ? ")" : ", ");
+		return s;
 	}
 	
 	private String getDescription() {
