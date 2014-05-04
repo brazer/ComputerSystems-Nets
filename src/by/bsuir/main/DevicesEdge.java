@@ -1,43 +1,13 @@
 package by.bsuir.main;
 
-import java.util.ArrayList;
+import by.bsuir.main.JsonParser.Data;
 
-class Edge	{
+class DevicesEdge extends Edge {
 	
-	private int id;
-	private static int count = 0;
-	private int idVertex1, idVertex2;
-	public final String name1, name2;
-	public static ArrayList<Edge> edges = new ArrayList<Edge>();
-	public static ArrayList<Edge> devEdges = new ArrayList<Edge>();
-	
-	public Edge(String n1, String n2) {
-		count++; id = count;
-		name1 = n1;
-		name2 = n2;
+	public DevicesEdge(String n1, String n2) {
+		super(n1, n2);
 	}
-	
-	public int getId() {
-		return id;
-	}
-	
-	public int getIdVertex1() {
-		return idVertex1;
-	}
-	
-	public int getIdVertex2() {
-		return idVertex2;
-	}
-		
-	public void setIds(int id1, int id2) {
-		this.idVertex1 = id1;
-		this.idVertex2 = id2;
-	}
-	
-	public static int getCount() {
-		return count;
-	}
-	
+
 	public static void buildEdges() {
 		Tree t = Tree.getRoot();
 		traverse((Node) t);
@@ -62,14 +32,22 @@ class Edge	{
 		String str2 = getNodeInfo(child);
 		Edge edge = new Edge(str1, str2);
 		edge.setIds(parent.getId(), child.getId());
-		edges.add(edge);
+		devEdges.add(edge);
 		traverse(child);
 	}
 	
 	private static String getNodeInfo(Node n) {
-		String s;
-		s = String.valueOf(n.getId());
-		s += ": "+String.valueOf(n.getOperation());
+		String s = "V"+n.getId()+": ";
+		Data d = JsonParser.getDataFromStatic();
+		char oper = n.getOperation();
+		if (oper=='=')
+			s += ""+d.getDeviceNumberWithMinCoef(4);
+		if (oper=='+' | oper=='-')
+			s += ""+d.getDeviceNumberWithMinCoef(0);
+		if (oper=='*' | oper=='/')
+			s += ""+d.getDeviceNumberWithMinCoef(1);
+		if (oper=='F' | oper=='f')
+			s += ""+d.getDeviceNumberWithMinCoef(2);
 		return s;
 	}
 	
@@ -78,13 +56,13 @@ class Edge	{
 		String str2 = getLeafInfo(l);
 		Edge edge = new Edge(str1, str2);
 		edge.setIds(n.getId(), l.getId());
-		edges.add(edge);
+		devEdges.add(edge);
 	}
 	
 	private static String getLeafInfo(Leaf l) {
-		String s;
-		s = String.valueOf(l.getId());
-		s += ": X"+String.valueOf(l.getX());
+		String s = "V"+l.getId()+": ";
+		Data d = JsonParser.getDataFromStatic();
+		s += ""+d.getDeviceNumberWithMinCoef(3);
 		return s;
 	}
 	

@@ -118,12 +118,13 @@ public class Graph extends JApplet {
  
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public Graph() {
-         
+    	
         // create a simple graph for the demo
         graph = new DelegateForest<String,Integer>();
  
-        createTree();
-         
+        if (Edge.devEdges.size()>0) ctreateTreeForDevices();
+        else createTree();
+        
         treeLayout = new TreeLayout<String,Integer>(graph);
         radialLayout = new RadialTreeLayout<String,Integer>(graph);
         radialLayout.setSize(new Dimension(500,400));
@@ -277,8 +278,15 @@ public class Graph extends JApplet {
 	        graph.addEdge(edgeFactory.create(), "B4", "B7");
 	        graph.addEdge(edgeFactory.create(), "B3", "B8");
 	        graph.addEdge(edgeFactory.create(), "B6", "B9");
-    	}
-         
+    	}         
+    }
+    
+    private void ctreateTreeForDevices() {
+    	for (int i=0; i<Edge.devEdges.size(); i++)
+    		graph.addEdge(edgeFactory.create(), 
+    				Edge.devEdges.get(i).name1,
+    				Edge.devEdges.get(i).name2
+    				);
     }
  
     public static Forest<String, Integer> getGraph() {

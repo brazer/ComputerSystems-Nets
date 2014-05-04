@@ -18,6 +18,7 @@ public class Main {
 	private JButton showComplianceMatrix = new JButton("Показать матрицу соответствия");
 	private JButton showFunctionVector = new JButton("Показать вектор назначения");
 	private JButton showRealisationVector = new JButton("Показать вектор реализации");
+	private JButton showDeviceGraph = new JButton("Показать граф устройтв");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -79,6 +80,7 @@ public class Main {
 				showComplianceMatrix();
 				showFunctionVector.setEnabled(true);
 				showRealisationVector.setEnabled(true);
+				showDeviceGraph.setEnabled(true);
 			}
 		});
 		showFunctionVector.setEnabled(false);
@@ -93,6 +95,12 @@ public class Main {
 				showRealisationVector();
 			}
 		});
+		showDeviceGraph.setEnabled(false);
+		showDeviceGraph.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showDeviceGraph();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
@@ -104,6 +112,7 @@ public class Main {
 		buttonPanel.add(showComplianceMatrix);
 		buttonPanel.add(showFunctionVector);
 		buttonPanel.add(showRealisationVector);
+		buttonPanel.add(showDeviceGraph);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -176,6 +185,14 @@ public class Main {
 		TextAreaFrame frame = new TextAreaFrame(vector.getVector(), "T(");
 		frame.setTitle("Вектор реализации");
 		frame.setSize(500, 70);
+		frame.setVisible(true);
+	}
+	
+	private void showDeviceGraph() {
+		DevicesEdge.buildEdges();
+		GraphFrame frame = new GraphFrame();
+		frame.setTitle("Граф");
+		frame.setSize(600, 600);
 		frame.setVisible(true);
 	}
 	
