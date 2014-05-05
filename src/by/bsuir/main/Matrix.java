@@ -7,7 +7,7 @@ public class Matrix {
 	public static int[][] buildMatrix() {
 		int length = Tree.getCount();
 		matrix = new int[length][length];
-		for (int i=0; i<Edge.getCount(); i++) {
+		for (int i=0; i<Edge.edges.size(); i++) {
 			Edge e = Edge.edges.get(i);
 			matrix[e.getIdVertex1()-1][e.getIdVertex2()-1] = 1;
 			matrix[e.getIdVertex2()-1][e.getIdVertex1()-1] = 1;
