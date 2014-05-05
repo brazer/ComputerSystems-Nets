@@ -19,6 +19,7 @@ public class Main {
 	private JButton showFunctionVector = new JButton("Показать вектор назначения");
 	private JButton showRealisationVector = new JButton("Показать вектор реализации");
 	private JButton showDeviceGraph = new JButton("Показать граф устройтв");
+	private JButton showMaxTime = new JButton("Рассчитать максимальное время");
 	private JLabel label = new JLabel("Введите функцию:");
 	private JTextField functionField = 
 			new JTextField("Y = x1*x2+x3*x4+x7*x5+x6/F(x8/x9-x10)");
@@ -32,7 +33,7 @@ public class Main {
 	public Main() {
 		JFrame frame = new JFrame();
 		frame.setTitle("Основное окно");
-		frame.setSize(500, 200);
+		frame.setSize(500, 250);
 		parseButton.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent arg0) {
 				parseString();
@@ -81,6 +82,7 @@ public class Main {
 				showFunctionVector.setEnabled(true);
 				showRealisationVector.setEnabled(true);
 				showDeviceGraph.setEnabled(true);
+				showMaxTime.setEnabled(true);
 			}
 		});
 		showFunctionVector.setEnabled(false);
@@ -101,6 +103,12 @@ public class Main {
 				showDeviceGraph();
 			}
 		});
+		showMaxTime.setEnabled(false);
+		showMaxTime.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent arg0) {
+				showMaxTime();
+			}
+		});
 		panel.add(label);
 		panel.add(functionField);
 		panel.add(parseButton);
@@ -113,6 +121,7 @@ public class Main {
 		buttonPanel.add(showFunctionVector);
 		buttonPanel.add(showRealisationVector);
 		buttonPanel.add(showDeviceGraph);
+		buttonPanel.add(showMaxTime);
 		frame.add(panel, BorderLayout.NORTH);
 		frame.add(buttonPanel);
 		frame.setVisible(true);
@@ -193,6 +202,13 @@ public class Main {
 		GraphFrame frame = new GraphFrame();
 		frame.setTitle("Граф");
 		frame.setSize(600, 600);
+		frame.setVisible(true);
+	}
+	
+	private void showMaxTime() {
+		TimeFrame frame = new TimeFrame();
+		frame.setTitle("Максимальное время");
+		frame.setSize(300, 300);
 		frame.setVisible(true);
 	}
 	

@@ -25,7 +25,7 @@ public abstract class Tree {
 	public static int getCount() {
 		return count;
 	}
-
+	
 }
 
 class Node extends Tree {

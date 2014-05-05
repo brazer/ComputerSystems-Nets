@@ -5,10 +5,14 @@ import java.util.ArrayList;
 public class Path {
 	
 	@SuppressWarnings("unchecked")
-	private ArrayList<String>[] paths = new ArrayList[10];
+	private static ArrayList<String>[] paths = new ArrayList[10];
 	private int count = 0;
 	
 	public ArrayList<String>[] getPaths() {
+		return paths;
+	}
+	
+	public static ArrayList<String>[] getPathsFromStatic() {
 		return paths;
 	}
 	
